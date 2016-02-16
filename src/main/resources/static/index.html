@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" ng-app="todoListApp">
+<head>
+    <meta charset="utf-8">
+    <title>My TodoList</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+    <link rel="stylesheet" href="css/todolist.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+<div class="todoList text-center" ng-controller="TodoListListCtrl">
+
+    <div class="form-inline add-action">
+        <div class="form-group">
+            <label>TaskName</label>
+            <input type="text" class="form-control" ng-model="actionName">
+            <button type="button" class="btn btn-primary" ng-click="addAction()">Enter your task</button>
+        </div>
+
+
+
+    </div>
+
+    <div>
+        <table class="table table-striped text-left">
+            <thead>
+            <tr>
+                <th><button type="button" class="btn btn-primary" ng-click="isDone()">Select Done</button></th>
+                <th>Done</th>
+                <th>Action name</th>
+                <th><button type="button" class="btn btn-primary" ng-click="isNotDone()">Select Not Done</button></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="action in todoList">
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="setMade(action.id)">Set done</button>
+                </td>
+                <td>{{action.isMade}}</td>
+                <td>{{action.actionName}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" ng-click="deleteAction(action.id)">Delete</button>
+                </td>
+
+
+            </tr>
+        </table>
+    </div>
+    <button type="button" class="btn btn-primary" ng-click="showAll()">Show all tasks</button>
+
+    <div class="form-horizontal todoList__btns">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-primary" ng-click="previousPage()"><-- Previous page</button> <button type="button" class="btn btn-primary" ng-click="nextPage()">Next page   --></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
